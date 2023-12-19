@@ -30,6 +30,10 @@ const resultSchema = new mongoose.Schema({
     type: String, 
     required: false
 },
+  folder: {
+    type: String, 
+    required: false
+  },
 
   // folder 
   folderName: {
