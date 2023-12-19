@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import cors from "cors";
 
 import Result from './routes/Result';
 
@@ -16,6 +17,7 @@ db.once("open", () => {
 });
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 app.listen(port, () => {
