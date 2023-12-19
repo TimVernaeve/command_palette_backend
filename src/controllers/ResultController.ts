@@ -2,18 +2,16 @@ import Result from '../models/Result';
 import { Request, Response } from 'express';
 
 export const getResults = async (req: Request, res: Response) => {
-    try {
-        const results = await Result.find();
-        res.status(200).json({
-             confirmation: "success",
-             data: results
+    await Result.find()
+    .then((data) => {
+        return res.status(200).json({
+            message: "Search results found.",
+            results: data,
         });
-    } catch (error: any) {
-        res.status(500).json({
-             confirmation: "fail",
-             message: error.message 
-        });
-    }
+    })
+    .catch((err) => {
+        console.log("error: " + err);
+    });
  }
 
 export default { getResults };
